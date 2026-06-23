@@ -62,9 +62,16 @@ function initUnitAccordions(){
       if(e.target.closest('.week-box')) return;
       const isOpen = detail.classList.toggle('open');
       chevronBtn.classList.toggle('open', isOpen);
+      header.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     };
 
     header.addEventListener('click', toggle);
+    header.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        toggle(e);
+      }
+    });
   });
 }
 
