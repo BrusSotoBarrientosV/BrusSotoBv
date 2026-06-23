@@ -243,24 +243,34 @@ button{font-family:inherit;}
   display:flex;
   gap:12px;
   flex:1;
+  flex-wrap:wrap;
 }
 .week-box{
   flex:1;
+  min-width:120px;
   border:1px solid var(--border);
   border-radius:10px;
-  padding:12px 8px;
+  padding:10px 8px 8px;
   text-align:center;
   background:#fcfcfd;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  transition:box-shadow .12s ease, border-color .12s ease;
+}
+.week-box:hover{
+  box-shadow:0 4px 10px rgba(20,20,43,.06);
+}
+.week-box-main{
+  border:none;
+  background:none;
+  padding:2px 0 10px;
   cursor:pointer;
-  font-family:inherit;
   display:flex;
   flex-direction:column;
   align-items:center;
-  transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-}
-.week-box:hover{
-  transform:translateY(-2px);
-  box-shadow:0 4px 10px rgba(20,20,43,.06);
+  font-family:inherit;
+  color:inherit;
 }
 .week-box .week-label{
   font-size:11.5px;
@@ -288,6 +298,96 @@ button{font-family:inherit;}
 .unit-2 .week-box.completed .week-icon{background:var(--blue);}
 .unit-3 .week-box.completed .week-icon{background:var(--purple);}
 .unit-4 .week-box.completed .week-icon{background:var(--orange);}
+
+/* DOCUMENTOS POR SEMANA */
+.week-docs{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  margin-bottom:8px;
+}
+.week-doc{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:7px;
+  padding:5px 5px 5px 7px;
+  font-size:11px;
+}
+.week-doc-link{
+  flex:1;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  text-decoration:none;
+  color:var(--text-dark);
+  overflow:hidden;
+  min-width:0;
+}
+.week-doc:hover .week-doc-link{color:var(--blue);}
+.week-doc .doc-icon{
+  flex-shrink:0;
+  width:18px;
+  height:18px;
+  border-radius:5px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+}
+.week-doc .doc-name{
+  flex:1;
+  min-width:0;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  font-weight:600;
+  text-align:left;
+}
+.doc-remove{
+  flex-shrink:0;
+  border:1px solid var(--border);
+  background:#fff;
+  color:#e0473e;
+  cursor:pointer;
+  padding:3px 7px;
+  border-radius:5px;
+  font-size:10px;
+  font-weight:700;
+  font-family:inherit;
+  white-space:nowrap;
+}
+.doc-remove:hover{background:#fdecec; border-color:#e0473e;}
+
+.doc-icon.pdf{background:#e35349;}
+.doc-icon.word{background:#2f6fed;}
+.doc-icon.excel{background:#22a559;}
+.doc-icon.ppt{background:#f08a1f;}
+.doc-icon.link{background:#7c4dd6;}
+
+.add-doc-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  border:1px dashed var(--border);
+  background:none;
+  border-radius:7px;
+  padding:6px 4px;
+  font-size:11px;
+  font-weight:600;
+  color:var(--text-mid);
+  cursor:pointer;
+  font-family:inherit;
+  transition:border-color .15s ease, color .15s ease, background .15s ease;
+}
+.add-doc-btn:hover{
+  border-color:var(--blue);
+  color:var(--blue);
+  background:var(--blue-light);
+}
 
 .chevron-btn{
   flex-shrink:0;
@@ -381,6 +481,9 @@ button{font-family:inherit;}
   padding:24px;
   box-shadow:0 12px 40px rgba(20,20,43,.2);
 }
+#doc-modal-overlay .modal-box{
+  max-width:420px;
+}
 .modal-box .modal-icon{
   width:44px;
   height:44px;
@@ -414,6 +517,43 @@ button{font-family:inherit;}
   color:#fff;
 }
 .modal-actions button:hover{opacity:.9;}
+
+/* FORMULARIO AGREGAR DOCUMENTO */
+.form-field{
+  margin-bottom:14px;
+  text-align:left;
+}
+.form-field label{
+  display:block;
+  font-size:12.5px;
+  font-weight:600;
+  color:var(--text-dark);
+  margin-bottom:5px;
+}
+.form-field input,
+.form-field select{
+  width:100%;
+  padding:9px 10px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  font-size:13.5px;
+  font-family:inherit;
+  color:var(--text-dark);
+  background:#fff;
+}
+.form-field input:focus,
+.form-field select:focus{
+  outline:none;
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px var(--blue-light);
+}
+.form-error{
+  display:none;
+  color:#e0473e;
+  font-size:12.5px;
+  margin:-4px 0 14px 0;
+}
+.form-error.show{display:block;}
 
 @media (max-width: 980px){
   .weeks{flex-wrap:wrap;}
