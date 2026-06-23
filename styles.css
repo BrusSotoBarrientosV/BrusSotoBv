@@ -247,30 +247,22 @@ button{font-family:inherit;}
 }
 .week-box{
   flex:1;
-  min-width:120px;
+  min-width:100px;
   border:1px solid var(--border);
   border-radius:10px;
-  padding:10px 8px 8px;
+  padding:12px 8px;
   text-align:center;
   background:#fcfcfd;
-  display:flex;
-  flex-direction:column;
-  align-items:stretch;
-  transition:box-shadow .12s ease, border-color .12s ease;
-}
-.week-box:hover{
-  box-shadow:0 4px 10px rgba(20,20,43,.06);
-}
-.week-box-main{
-  border:none;
-  background:none;
-  padding:2px 0 10px;
   cursor:pointer;
+  font-family:inherit;
   display:flex;
   flex-direction:column;
   align-items:center;
-  font-family:inherit;
-  color:inherit;
+  transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.week-box:hover{
+  transform:translateY(-2px);
+  box-shadow:0 4px 10px rgba(20,20,43,.06);
 }
 .week-box .week-label{
   font-size:11.5px;
@@ -299,7 +291,7 @@ button{font-family:inherit;}
 .unit-3 .week-box.completed .week-icon{background:var(--purple);}
 .unit-4 .week-box.completed .week-icon{background:var(--orange);}
 
-/* DOCUMENTOS POR SEMANA */
+/* DOCUMENTOS POR SEMANA (mostrados dentro del modal) */
 .week-docs{
   display:flex;
   flex-direction:column;
@@ -366,28 +358,6 @@ button{font-family:inherit;}
 .doc-icon.excel{background:#22a559;}
 .doc-icon.ppt{background:#f08a1f;}
 .doc-icon.link{background:#7c4dd6;}
-
-.add-doc-btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:5px;
-  border:1px dashed var(--border);
-  background:none;
-  border-radius:7px;
-  padding:6px 4px;
-  font-size:11px;
-  font-weight:600;
-  color:var(--text-mid);
-  cursor:pointer;
-  font-family:inherit;
-  transition:border-color .15s ease, color .15s ease, background .15s ease;
-}
-.add-doc-btn:hover{
-  border-color:var(--blue);
-  color:var(--blue);
-  background:var(--blue-light);
-}
 
 .chevron-btn{
   flex-shrink:0;
@@ -473,6 +443,9 @@ button{font-family:inherit;}
   padding:20px;
 }
 .modal-overlay.open{display:flex;}
+#doc-modal-overlay{
+  z-index:60;
+}
 .modal-box{
   background:#fff;
   border-radius:16px;
@@ -499,7 +472,34 @@ button{font-family:inherit;}
 .modal-icon.unit-4{background:var(--orange-light); color:var(--orange);}
 .modal-box h3{margin:0 0 6px 0; font-size:17px;}
 .modal-box p{margin:0 0 18px 0; font-size:13.5px; color:var(--text-mid); line-height:1.5;}
+
+/* SECCIÓN DE DOCUMENTOS DENTRO DEL MODAL DE SEMANA */
+.modal-docs-section{
+  margin-bottom:16px;
+}
+.modal-docs-label{
+  font-size:11.5px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  color:var(--text-light);
+  margin-bottom:8px;
+}
+.modal-docs-section .week-docs{
+  margin-bottom:0;
+}
+.modal-docs-empty{
+  font-size:13px;
+  color:var(--text-light);
+  font-style:italic;
+  padding:10px 0;
+}
+
 .modal-actions{display:flex; gap:10px;}
+.modal-actions-stacked{
+  flex-direction:column;
+  gap:10px;
+}
 .modal-actions button{
   flex:1;
   padding:10px 14px;
@@ -515,6 +515,16 @@ button{font-family:inherit;}
   background:var(--blue);
   border-color:var(--blue);
   color:#fff;
+}
+.modal-actions .secondary{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  border-style:dashed;
+  color:var(--blue);
+  border-color:var(--blue-light);
+  background:var(--blue-light);
 }
 .modal-actions button:hover{opacity:.9;}
 
