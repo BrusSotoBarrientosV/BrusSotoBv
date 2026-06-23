@@ -41,16 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initModal();
   initDocModal();
   initLogout();
-  renderAllWeekDocs();
   updateProgress();
 });
-
-/* ---------------- RENDER INICIAL DE TODAS LAS SEMANAS ---------------- */
-function renderAllWeekDocs(){
-  for(let week = 1; week <= TOTAL_WEEKS; week++){
-    renderWeekDocs(String(week));
-  }
-}
 
 /* ---------------- NAVEGACIÓN LATERAL ---------------- */
 function initSidebarNav(){
@@ -112,29 +104,23 @@ function initUnitAccordions(){
 
 /* ---------------- SEMANAS ---------------- */
 function initWeekBoxes(){
-  document.querySelectorAll('.week-box-main').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  document.querySelectorAll('.week-box').forEach(box => {
+    box.addEventListener('click', (e) => {
       e.stopPropagation();
-      const box = btn.closest('.week-box');
       openWeekModal(box);
-    });
-  });
-
-  document.querySelectorAll('.add-doc-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      openDocModal(btn.dataset.week);
     });
   });
 }
 
-/* ---------------- MODAL ---------------- */
+/* ---------------- MODAL DE SEMANA ---------------- */
 let activeWeekBox = null;
+let activeWeekNumber = null;
 
 function initModal(){
   const overlay = document.getElementById('modal-overlay');
   const closeBtn = document.getElementById('modal-close');
   const toggleBtn = document.getElementById('modal-toggle-complete');
+  const addDocBtn = document.getElementById('modal-add-doc');
 
   overlay.addEventListener('click', (e) => {
     if(e.target === overlay) closeModal();
@@ -147,10 +133,17 @@ function initModal(){
     toggleBtn.textContent = completed ? 'Marcar como pendiente' : 'Marcar como completada';
     updateProgress();
   });
+
+  addDocBtn.addEventListener('click', () => {
+    if(!activeWeekNumber) return;
+    openDocModal(activeWeekNumber);
+  });
 }
 
 function openWeekModal(box){
   activeWeekBox = box;
+  activeWeekNumber = box.dataset.week;
+
   const overlay = document.getElementById('modal-overlay');
   const title = document.getElementById('modal-title');
   const desc = document.getElementById('modal-desc');
@@ -167,12 +160,14 @@ function openWeekModal(box){
   iconWrap.className = 'modal-icon ' + unitCard.className.match(/unit-\d/)[0];
   toggleBtn.textContent = isCompleted ? 'Marcar como pendiente' : 'Marcar como completada';
 
+  renderWeekDocs(activeWeekNumber);
   overlay.classList.add('open');
 }
 
 function closeModal(){
   document.getElementById('modal-overlay').classList.remove('open');
   activeWeekBox = null;
+  activeWeekNumber = null;
 }
 
 /* ---------------- PROGRESO GENERAL ---------------- */
@@ -280,9 +275,14 @@ function closeDocModal(){
 }
 
 function renderWeekDocs(week){
-  const container = document.getElementById(`week-docs-${week}`);
+  const container = document.getElementById('modal-week-docs');
   if(!container) return;
   const docs = weekDocuments[week] || [];
+
+  if(docs.length === 0){
+    container.innerHTML = '<div class="modal-docs-empty">Todavía no hay documentos agregados para esta semana.</div>';
+    return;
+  }
 
   container.innerHTML = docs.map((doc, index) => `
     <div class="week-doc">
