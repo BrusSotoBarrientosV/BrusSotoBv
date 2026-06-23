@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerencia de sistemas de información — Plan de estudio</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M4 19.5C4 18.12 5.12 17 6.5 17H20" stroke="#2f6fed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6.5 2H20V22H6.5C5.12 22 4 20.88 4 19.5V4.5C4 3.12 5.12 2 6.5 2Z" stroke="#2f6fed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Gerencia de sistemas de información
+    </div>
+
+    <nav class="nav">
+      <button class="nav-link" data-view="inicio" data-label="Inicio">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V9.5Z"/></svg>
+        Inicio
+      </button>
+      <button class="nav-link active" data-view="unidades" data-label="Plan de estudio">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Unidades
+      </button>
+      <button class="nav-link" data-view="recursos" data-label="Recursos">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5C4 18.12 5.12 17 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        Recursos
+      </button>
+      <button class="nav-link" data-view="actividades" data-label="Actividades">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        Actividades
+      </button>
+      <button class="nav-link" data-view="foro" data-label="Foro">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+        Foro
+      </button>
+      <button class="nav-link" data-view="calificaciones" data-label="Calificaciones">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 17V9"/><path d="M15 17V5"/><path d="M21 17V13"/><path d="M3 17h18"/></svg>
+        Calificaciones
+      </button>
+      <button class="nav-link" data-view="calendario" data-label="Calendario">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Calendario
+      </button>
+      <button class="nav-link" data-view="mensajes" data-label="Mensajes">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Mensajes
+      </button>
+      <button class="nav-link" data-view="perfil" data-label="Perfil">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
+        Perfil
+      </button>
+    </nav>
+
+    <button class="logout" id="logout-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+      Cerrar sesión
+    </button>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+    <div class="breadcrumb">
+      <button class="crumb-link" id="breadcrumb-home">Unidades</button> / <span class="current" id="breadcrumb-current">Plan de estudio</span>
+    </div>
+
+    <!-- VISTA: UNIDADES (Plan de estudio) -->
+    <section class="view active" id="view-unidades">
+      <div class="header-row">
+        <div>
+          <h1>Plan de estudio</h1>
+          <p class="subtitle">4 unidades · 16 semanas</p>
+        </div>
+        <div class="progress-card">
+          <div class="progress-card-top">
+            <span>Progreso general</span>
+            <span id="progress-percent">25%</span>
+          </div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="progress-fill"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="units">
+
+        <!-- UNIDAD 1 -->
+        <div class="unit-card unit-1">
+          <button class="unit-card-header">
+            <div class="unit-id">1</div>
+            <div class="unit-title">
+              <div class="label">Unidad 1</div>
+              <div class="name">Fundamentos</div>
+            </div>
+            <div class="weeks">
+              <button class="week-box completed"><span class="week-label">Semana 1</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+              <button class="week-box completed"><span class="week-label">Semana 2</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+              <button class="week-box completed"><span class="week-label">Semana 3</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+              <button class="week-box completed"><span class="week-label">Semana 4</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+            </div>
+            <span class="chevron-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+          <div class="unit-detail">
+            <div class="unit-detail-inner">
+              Introducción a los conceptos básicos del curso: definiciones clave, marco teórico y herramientas iniciales que se usarán en las siguientes unidades.
+            </div>
+          </div>
+        </div>
+
+        <!-- UNIDAD 2 -->
+        <div class="unit-card unit-2">
+          <button class="unit-card-header">
+            <div class="unit-id">2</div>
+            <div class="unit-title">
+              <div class="label">Unidad 2</div>
+              <div class="name">Desarrollo</div>
+            </div>
+            <div class="weeks">
+              <button class="week-box"><span class="week-label">Semana 5</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+              <button class="week-box"><span class="week-label">Semana 6</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+              <button class="week-box"><span class="week-label">Semana 7</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+              <button class="week-box"><span class="week-label">Semana 8</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+            </div>
+            <span class="chevron-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+          <div class="unit-detail">
+            <div class="unit-detail-inner">
+              Profundización práctica: aplicación de los fundamentos en casos reales, ejercicios guiados y primeras entregas evaluables.
+            </div>
+          </div>
+        </div>
+
+        <!-- UNIDAD 3 -->
+        <div class="unit-card unit-3">
+          <button class="unit-card-header">
+            <div class="unit-id">3</div>
+            <div class="unit-title">
+              <div class="label">Unidad 3</div>
+              <div class="name">Aplicación</div>
+            </div>
+            <div class="weeks">
+              <button class="week-box"><span class="week-label">Semana 9</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+              <button class="week-box"><span class="week-label">Semana 10</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+              <button class="week-box"><span class="week-label">Semana 11</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+              <button class="week-box"><span class="week-label">Semana 12</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+            </div>
+            <span class="chevron-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+          <div class="unit-detail">
+            <div class="unit-detail-inner">
+              Desarrollo de un proyecto aplicado que integra lo aprendido, con retroalimentación continua y ajustes sobre la marcha.
+            </div>
+          </div>
+        </div>
+
+        <!-- UNIDAD 4 -->
+        <div class="unit-card unit-4">
+          <button class="unit-card-header">
+            <div class="unit-id">4</div>
+            <div class="unit-title">
+              <div class="label">Unidad 4</div>
+              <div class="name">Integración</div>
+            </div>
+            <div class="weeks">
+              <button class="week-box"><span class="week-label">Semana 13</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+              <button class="week-box"><span class="week-label">Semana 14</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+              <button class="week-box"><span class="week-label">Semana 15</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+              <button class="week-box"><span class="week-label">Semana 16</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+            </div>
+            <span class="chevron-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+          <div class="unit-detail">
+            <div class="unit-detail-inner">
+              Cierre del curso: integración de todas las unidades en una entrega final y evaluación general de lo aprendido.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="info-banner">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        Completa todas las semanas para finalizar el curso.
+      </div>
+    </section>
+
+    <!-- VISTAS PLACEHOLDER PARA EL RESTO DEL MENÚ -->
+    <section class="view placeholder-view" id="view-inicio">
+      <h1>Inicio</h1>
+      <p>Resumen general de tu actividad en el curso.</p>
+      <div class="placeholder-card">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V9.5Z"/></svg>
+        <p>Aún no hay novedades en tu página de inicio.</p>
+      </div>
+    </section>
+
+    <section class="view placeholder-view" id="view-recursos">
+      <h1>Recursos</h1>
+      <p>Materiales de lectura, presentaciones y archivos del curso.</p>
+      <div class="placeholder-card">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5C4 18.12 5.12 17 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        <p>No se han publicado recursos todavía.</p>
+      </div>
+    </section>
+
+    <section class="view placeholder-view" id="view-actividades">
+      <h1>Actividades</h1>
+      <p>Tareas y entregables pendientes y calificados.</p>
+      <div class="placeholder-card">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <p>No tienes actividades pendientes por ahora.</p>
+      </div>
+    </section>
+
+    <section class="view placeholder-view" id="view-foro">
+      <h1>Foro</h1>
+      <p>Espacio de discusión con tus compañeros y docente.</p>
+      <div class="placeholder-card">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+        <p>Todavía no hay publicaciones en el foro.</p>
+      </div>
+    </section>
+
+    <section class="view placeholder-view" id="view-calificaciones">
+      <h1>Calificaciones</h1>
+      <p>Resumen de notas por unidad y actividad.</p>
+      <div class="placeholder-card">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 17V9"/><path d="M15 17V5"/><path d="M21 17V13"/><path d="M3 17h18"/></svg>
+        <p>Aún no hay calificaciones registradas.</p>
+      </div>
+    </section>
+
+    <section class="view placeholder-view" id="view-calendario">
+      <h1>Calendario</h1>
+      <p>Fechas importantes y entregas programadas.</p>
+      <div class="placeholder-card">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <p>No tienes eventos próximos en el calendario.</p>
+      </div>
+    </section>
+
+    <section class="view placeholder-view" id="view-mensajes">
+      <h1>Mensajes</h1>
+      <p>Conversaciones con docentes y compañeros.</p>
+      <div class="placeholder-card">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <p>No tienes mensajes nuevos.</p>
+      </div>
+    </section>
+
+    <section class="view placeholder-view" id="view-perfil">
+      <h1>Perfil</h1>
+      <p>Tu información personal y preferencias de cuenta.</p>
+      <div class="placeholder-card">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
+        <p>Edita tu perfil próximamente desde aquí.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL DE SEMANA -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-icon" id="modal-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg>
+      </div>
+      <h3 id="modal-title">Semana 1</h3>
+      <p id="modal-desc">Contenido de la semana.</p>
+      <div class="modal-actions">
+        <button id="modal-close">Cerrar</button>
+        <button id="modal-toggle-complete" class="primary">Marcar como completada</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
