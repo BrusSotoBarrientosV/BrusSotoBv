@@ -194,12 +194,14 @@ button{font-family:inherit;}
   gap:18px;
   padding:18px 20px;
   cursor:pointer;
-  border:none;
-  background:none;
   width:100%;
   text-align:left;
   font-family:inherit;
   color:inherit;
+}
+.unit-card-header:focus-visible{
+  outline:2px solid var(--blue);
+  outline-offset:-2px;
 }
 
 .unit-id{
