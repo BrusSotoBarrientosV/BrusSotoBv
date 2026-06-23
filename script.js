@@ -4,18 +4,53 @@
    - Acordeón de unidades (chevron)
    - Selección de semanas con modal y marcado de progreso
    - Cálculo dinámico del progreso general
+   - Agregar/borrar documentos (por enlace) en cada semana — persistente
+     entre sesiones usando localStorage del navegador
 ------------------------------------------------------------------- */
 
 const TOTAL_WEEKS = 16;
+const STORAGE_KEY = 'micurso_week_documents';
+
+// Documentos por semana: { "1": [ {name, type, url}, ... ], ... }
+// Se cargan desde localStorage al iniciar y se guardan ahí cada cambio,
+// por lo que sobreviven a recargas y al cerrar/abrir el navegador.
+let weekDocuments = loadDocuments();
+
+function loadDocuments(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  }catch{
+    return {};
+  }
+}
+
+function saveDocuments(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(weekDocuments));
+  }catch{
+    // Si localStorage no está disponible (modo privado, cuota llena, etc.)
+    console.warn('No se pudo guardar en localStorage; los documentos no persistirán.');
+  }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   initSidebarNav();
   initUnitAccordions();
   initWeekBoxes();
   initModal();
+  initDocModal();
   initLogout();
+  renderAllWeekDocs();
   updateProgress();
 });
+
+/* ---------------- RENDER INICIAL DE TODAS LAS SEMANAS ---------------- */
+function renderAllWeekDocs(){
+  for(let week = 1; week <= TOTAL_WEEKS; week++){
+    renderWeekDocs(String(week));
+  }
+}
 
 /* ---------------- NAVEGACIÓN LATERAL ---------------- */
 function initSidebarNav(){
@@ -77,10 +112,18 @@ function initUnitAccordions(){
 
 /* ---------------- SEMANAS ---------------- */
 function initWeekBoxes(){
-  document.querySelectorAll('.week-box').forEach(box => {
-    box.addEventListener('click', (e) => {
+  document.querySelectorAll('.week-box-main').forEach(btn => {
+    btn.addEventListener('click', (e) => {
       e.stopPropagation();
+      const box = btn.closest('.week-box');
       openWeekModal(box);
+    });
+  });
+
+  document.querySelectorAll('.add-doc-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openDocModal(btn.dataset.week);
     });
   });
 }
@@ -150,4 +193,129 @@ function initLogout(){
       alert('Sesión cerrada (demo).');
     }
   });
+}
+
+/* ---------------- AGREGAR DOCUMENTOS POR SEMANA ---------------- */
+const DOC_TYPE_LABELS = {
+  pdf: 'PDF',
+  word: 'Word',
+  excel: 'Excel',
+  ppt: 'PowerPoint',
+  link: 'Enlace'
+};
+
+const DOC_TYPE_ICONS = {
+  pdf: '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>',
+  word: '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>',
+  excel: '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>',
+  ppt: '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>',
+  link: '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"><path d="M10 13a5 5 0 0 0 7.5.4l2-2a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7.5-.4l-2 2a5 5 0 0 0 7 7l1-1"/></svg>'
+};
+
+let activeDocWeek = null;
+
+function initDocModal(){
+  const overlay = document.getElementById('doc-modal-overlay');
+  const closeBtn = document.getElementById('doc-modal-close');
+  const form = document.getElementById('doc-form');
+  const errorMsg = document.getElementById('doc-form-error');
+
+  overlay.addEventListener('click', (e) => {
+    if(e.target === overlay) closeDocModal();
+  });
+  closeBtn.addEventListener('click', closeDocModal);
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if(!activeDocWeek) return;
+
+    const nameInput = document.getElementById('doc-name');
+    const typeInput = document.getElementById('doc-type');
+    const urlInput = document.getElementById('doc-url');
+
+    const name = nameInput.value.trim();
+    const url = urlInput.value.trim();
+
+    if(!name || !isValidUrl(url)){
+      errorMsg.classList.add('show');
+      return;
+    }
+    errorMsg.classList.remove('show');
+
+    if(!weekDocuments[activeDocWeek]) weekDocuments[activeDocWeek] = [];
+    weekDocuments[activeDocWeek].push({
+      name,
+      type: typeInput.value,
+      url
+    });
+    saveDocuments();
+
+    renderWeekDocs(activeDocWeek);
+    form.reset();
+    closeDocModal();
+  });
+}
+
+function isValidUrl(value){
+  try{
+    const parsed = new URL(value);
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+  }catch{
+    return false;
+  }
+}
+
+function openDocModal(week){
+  activeDocWeek = week;
+  document.getElementById('doc-modal-title').textContent = `Agregar documento — Semana ${week}`;
+  document.getElementById('doc-form-error').classList.remove('show');
+  document.getElementById('doc-form').reset();
+  document.getElementById('doc-modal-overlay').classList.add('open');
+  document.getElementById('doc-name').focus();
+}
+
+function closeDocModal(){
+  document.getElementById('doc-modal-overlay').classList.remove('open');
+  activeDocWeek = null;
+}
+
+function renderWeekDocs(week){
+  const container = document.getElementById(`week-docs-${week}`);
+  if(!container) return;
+  const docs = weekDocuments[week] || [];
+
+  container.innerHTML = docs.map((doc, index) => `
+    <div class="week-doc">
+      <a class="week-doc-link" href="${escapeAttr(doc.url)}" target="_blank" rel="noopener noreferrer" title="${escapeAttr(doc.name)} (${DOC_TYPE_LABELS[doc.type]})">
+        <span class="doc-icon ${doc.type}">${DOC_TYPE_ICONS[doc.type]}</span>
+        <span class="doc-name">${escapeHtml(doc.name)}</span>
+      </a>
+      <button class="doc-remove" type="button" data-week="${week}" data-index="${index}">Borrar</button>
+    </div>
+  `).join('');
+
+  container.querySelectorAll('.doc-remove').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const w = btn.dataset.week;
+      const idx = parseInt(btn.dataset.index, 10);
+      const doc = weekDocuments[w][idx];
+      const ok = confirm(`¿Borrar el documento "${doc.name}"? Esta acción no se puede deshacer.`);
+      if(!ok) return;
+      weekDocuments[w].splice(idx, 1);
+      saveDocuments();
+      renderWeekDocs(w);
+    });
+  });
+}
+
+function escapeHtml(str){
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function escapeAttr(str){
+  return escapeHtml(str).replace(/"/g, '&quot;');
 }
