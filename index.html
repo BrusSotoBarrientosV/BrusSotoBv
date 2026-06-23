@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MiCurso — Plan de estudio</title>
+<title>Gerencia de sistemas de información — Plan de estudio</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
         <path d="M4 19.5C4 18.12 5.12 17 6.5 17H20" stroke="#2f6fed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M6.5 2H20V22H6.5C5.12 22 4 20.88 4 19.5V4.5C4 3.12 5.12 2 6.5 2Z" stroke="#2f6fed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      MiCurso
+      Gerencia de sistemas de información
     </div>
 
     <nav class="nav">
@@ -98,10 +98,50 @@
               <div class="name">Fundamentos</div>
             </div>
             <div class="weeks">
-              <button class="week-box completed"><span class="week-label">Semana 1</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
-              <button class="week-box completed"><span class="week-label">Semana 2</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
-              <button class="week-box completed"><span class="week-label">Semana 3</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
-              <button class="week-box completed"><span class="week-label">Semana 4</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+              <div class="week-box completed" data-week="1">
+                <button class="week-box-main">
+                  <span class="week-label">Semana 1</span>
+                  <span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span>
+                </button>
+                <div class="week-docs" id="week-docs-1"></div>
+                <button class="add-doc-btn" data-week="1">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+                  Agregar
+                </button>
+              </div>
+              <div class="week-box completed" data-week="2">
+                <button class="week-box-main">
+                  <span class="week-label">Semana 2</span>
+                  <span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span>
+                </button>
+                <div class="week-docs" id="week-docs-2"></div>
+                <button class="add-doc-btn" data-week="2">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+                  Agregar
+                </button>
+              </div>
+              <div class="week-box completed" data-week="3">
+                <button class="week-box-main">
+                  <span class="week-label">Semana 3</span>
+                  <span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span>
+                </button>
+                <div class="week-docs" id="week-docs-3"></div>
+                <button class="add-doc-btn" data-week="3">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+                  Agregar
+                </button>
+              </div>
+              <div class="week-box completed" data-week="4">
+                <button class="week-box-main">
+                  <span class="week-label">Semana 4</span>
+                  <span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span>
+                </button>
+                <div class="week-docs" id="week-docs-4"></div>
+                <button class="add-doc-btn" data-week="4">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+                  Agregar
+                </button>
+              </div>
             </div>
             <span class="chevron-btn">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
@@ -123,10 +163,50 @@
               <div class="name">Desarrollo</div>
             </div>
             <div class="weeks">
-              <button class="week-box"><span class="week-label">Semana 5</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
-              <button class="week-box"><span class="week-label">Semana 6</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
-              <button class="week-box"><span class="week-label">Semana 7</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
-              <button class="week-box"><span class="week-label">Semana 8</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+              <div class="week-box" data-week="5">
+                <button class="week-box-main">
+                  <span class="week-label">Semana 5</span>
+                  <span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span>
+                </button>
+                <div class="week-docs" id="week-docs-5"></div>
+                <button class="add-doc-btn" data-week="5">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+                  Agregar
+                </button>
+              </div>
+              <div class="week-box" data-week="6">
+                <button class="week-box-main">
+                  <span class="week-label">Semana 6</span>
+                  <span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span>
+                </button>
+                <div class="week-docs" id="week-docs-6"></div>
+                <button class="add-doc-btn" data-week="6">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+                  Agregar
+                </button>
+              </div>
+              <div class="week-box" data-week="7">
+                <button class="week-box-main">
+                  <span class="week-label">Semana 7</span>
+                  <span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span>
+                </button>
+                <div class="week-docs" id="week-docs-7"></div>
+                <button class="add-doc-btn" data-week="7">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+                  Agregar
+                </button>
+              </div>
+              <div class="week-box" data-week="8">
+                <button class="week-box-main">
+                  <span class="week-label">Semana 8</span>
+                  <span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span>
+                </button>
+                <div class="week-docs" id="week-docs-8"></div>
+                <button class="add-doc-btn" data-week="8">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+                  Agregar
+                </button>
+              </div>
             </div>
             <span class="chevron-btn">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
@@ -148,10 +228,50 @@
               <div class="name">Aplicación</div>
             </div>
             <div class="weeks">
-              <button class="week-box"><span class="week-label">Semana 9</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
-              <button class="week-box"><span class="week-label">Semana 10</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
-              <button class="week-box"><span class="week-label">Semana 11</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
-              <button class="week-box"><span class="week-label">Semana 12</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+              <div class="week-box" data-week="9">
+                <button class="week-box-main">
+                  <span class="week-label">Semana 9</span>
+                  <span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span>
+                </button>
+                <div class="week-docs" id="week-docs-9"></div>
+                <button class="add-doc-btn" data-week="9">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+                  Agregar
+                </button>
+              </div>
+              <div class="week-box" data-week="10">
+                <button class="week-box-main">
+                  <span class="week-label">Semana 10</span>
+                  <span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span>
+                </button>
+                <div class="week-docs" id="week-docs-10"></div>
+                <button class="add-doc-btn" data-week="10">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+                  Agregar
+                </button>
+              </div>
+              <div class="week-box" data-week="11">
+                <button class="week-box-main">
+                  <span class="week-label">Semana 11</span>
+                  <span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span>
+                </button>
+                <div class="week-docs" id="week-docs-11"></div>
+                <button class="add-doc-btn" data-week="11">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+                  Agregar
+                </button>
+              </div>
+              <div class="week-box" data-week="12">
+                <button class="week-box-main">
+                  <span class="week-label">Semana 12</span>
+                  <span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span>
+                </button>
+                <div class="week-docs" id="week-docs-12"></div>
+                <button class="add-doc-btn" data-week="12">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+                  Agregar
+                </button>
+              </div>
             </div>
             <span class="chevron-btn">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
@@ -173,10 +293,50 @@
               <div class="name">Integración</div>
             </div>
             <div class="weeks">
-              <button class="week-box"><span class="week-label">Semana 13</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
-              <button class="week-box"><span class="week-label">Semana 14</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
-              <button class="week-box"><span class="week-label">Semana 15</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
-              <button class="week-box"><span class="week-label">Semana 16</span><span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span></button>
+              <div class="week-box" data-week="13">
+                <button class="week-box-main">
+                  <span class="week-label">Semana 13</span>
+                  <span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span>
+                </button>
+                <div class="week-docs" id="week-docs-13"></div>
+                <button class="add-doc-btn" data-week="13">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+                  Agregar
+                </button>
+              </div>
+              <div class="week-box" data-week="14">
+                <button class="week-box-main">
+                  <span class="week-label">Semana 14</span>
+                  <span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span>
+                </button>
+                <div class="week-docs" id="week-docs-14"></div>
+                <button class="add-doc-btn" data-week="14">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+                  Agregar
+                </button>
+              </div>
+              <div class="week-box" data-week="15">
+                <button class="week-box-main">
+                  <span class="week-label">Semana 15</span>
+                  <span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span>
+                </button>
+                <div class="week-docs" id="week-docs-15"></div>
+                <button class="add-doc-btn" data-week="15">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+                  Agregar
+                </button>
+              </div>
+              <div class="week-box" data-week="16">
+                <button class="week-box-main">
+                  <span class="week-label">Semana 16</span>
+                  <span class="week-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4Z"/></svg></span>
+                </button>
+                <div class="week-docs" id="week-docs-16"></div>
+                <button class="add-doc-btn" data-week="16">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+                  Agregar
+                </button>
+              </div>
             </div>
             <span class="chevron-btn">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
@@ -271,6 +431,47 @@
     </section>
 
   </main>
+
+  <!-- MODAL AGREGAR DOCUMENTO -->
+  <div class="modal-overlay" id="doc-modal-overlay">
+    <div class="modal-box">
+      <div class="modal-icon doc-modal-icon" id="doc-modal-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      </div>
+      <h3 id="doc-modal-title">Agregar documento — Semana 1</h3>
+      <p>Pega el enlace del documento (PDF, Word, Excel, presentación, etc.) y dale un nombre para identificarlo.</p>
+
+      <form id="doc-form">
+        <div class="form-field">
+          <label for="doc-name">Nombre del documento</label>
+          <input type="text" id="doc-name" placeholder="Ej. Guía de lectura — Unidad 1" required>
+        </div>
+
+        <div class="form-field">
+          <label for="doc-type">Tipo de documento</label>
+          <select id="doc-type">
+            <option value="pdf">PDF</option>
+            <option value="word">Word (.doc/.docx)</option>
+            <option value="excel">Excel (.xls/.xlsx)</option>
+            <option value="ppt">PowerPoint (.ppt/.pptx)</option>
+            <option value="link">Enlace / otro</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="doc-url">Enlace del documento</label>
+          <input type="url" id="doc-url" placeholder="https://..." required>
+        </div>
+
+        <p class="form-error" id="doc-form-error">Por favor completa el nombre y un enlace válido.</p>
+
+        <div class="modal-actions">
+          <button type="button" id="doc-modal-close">Cancelar</button>
+          <button type="submit" class="primary">Agregar documento</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <!-- MODAL DE SEMANA -->
   <div class="modal-overlay" id="modal-overlay">
